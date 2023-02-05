@@ -6,9 +6,9 @@
    countryOfOrigin VARCHAR(20) NOT NULL,
    productName VARCHAR(50) NOT NULL,
    degreeOfRoasting VARCHAR(20) NOT NULL,
-   thoughts text default 'No Data',
+   thoughts TEXT,
    PRIMARY KEY (id)
  );
 
  INSERT INTO coffees (dataDay, countryOfOrigin, productName, degreeOfRoasting, thoughts) VALUES
- (now(), "ブルーマウンテン", "ジャマイカ", "浅煎り");
+ (now(), "ブルーマウンテン", "ジャマイカ", "浅煎り", "バランスがよく美味しかった");
