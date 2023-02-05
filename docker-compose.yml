@@ -2,13 +2,13 @@ version: '3.8'
 services:
   db:
     build: .
-    container_name: pfc-checker
+    container_name: coffeeDiary
     platform: linux/x86_64
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "${TAG_MYSQL_ROOT_PASSWORD}"
-      MYSQL_DATABASE: pfc
+      MYSQL_DATABASE: coffeeDiary
       MYSQL_USER: user
       MYSQL_PASSWORD: "${TAG_MYSQL_PASSWORD}"
     volumes:
