@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CrudTaskApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CrudTaskApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(CrudTaskApplication.class, args);
+    }
 }
