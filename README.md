@@ -1,4 +1,4 @@
-# RaiseTech 最終課題　
+# RaiseTech 最終課題　coffeeDiary
 RaiseTech最終課題  
 飲んだコーヒーの感想を記録するためのアプリ
 
