@@ -1,4 +1,4 @@
-# RaiseTech 最終課題　PFCチェッカー
+# RaiseTech 最終課題　
 RaiseTech最終課題  
 飲んだコーヒーの感想を記録するためのアプリ
 
