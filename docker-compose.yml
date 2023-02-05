@@ -8,13 +8,13 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "${TAG_MYSQL_ROOT_PASSWORD}"
-      MYSQL_DATABASE: coffeeDiary
+      MYSQL_DATABASE: coffee_diary
       MYSQL_USER: user
       MYSQL_PASSWORD: "${TAG_MYSQL_PASSWORD}"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
       - my-vol:/var/lib/mysql
     ports:
-      - "5100:80"
+      - "3308:3306"
 volumes:
   my-vol:
