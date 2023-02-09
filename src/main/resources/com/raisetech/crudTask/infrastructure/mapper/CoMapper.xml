@@ -9,4 +9,12 @@
         ORDER BY
             id
     </select>
+    <select id="findById" resultType="com.raisetech.crudTask.infrastructure.entity.Coffee">
+        SELECT
+            *
+        FROM
+            coffees
+        WHERE
+            id = #{id}
+    </select>
 </mapper>

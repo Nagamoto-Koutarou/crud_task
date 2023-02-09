@@ -1,5 +1,6 @@
 package com.raisetech.crudTask.domain.service;
 
+import com.raisetech.crudTask.domain.exception.ResourceNotFoundException;
 import com.raisetech.crudTask.infrastructure.entity.Coffee;
 import com.raisetech.crudTask.infrastructure.mapper.CoMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,5 +17,10 @@ public class CoServiceImpl implements CoService {
     @Override
     public List<Coffee> findAll() {
         return  coMapper.findAll();
+    }
+
+    @Override
+    public Coffee findById(int id) {
+        return this.coMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
     }
 }

@@ -11,9 +11,9 @@ RaiseTech最終課題
 現在開発中です。
 
 ## 使用技術
-- java 17.0.3
-- MYSQL 8.0
-- Docker/Docker-compose
+- Java 17.0.3
+- MySQL 8.0
+- Docker/Docker-Compose
 - MyBatis 3.5.11
 
 ## 機能一覧
