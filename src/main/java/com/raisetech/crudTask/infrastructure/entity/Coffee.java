@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Coffee {
     private int id;
-    private LocalDate recordDay;
+    private LocalDate created_date;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;

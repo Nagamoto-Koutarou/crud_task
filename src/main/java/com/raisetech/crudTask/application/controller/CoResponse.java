@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class CoResponse {
 
     private int id;
-    private LocalDate recordDay;
+    private LocalDate created_date;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;
@@ -21,7 +21,7 @@ public class CoResponse {
 
     public CoResponse(Coffee coffee) {
         this.id = coffee.getId();
-        this.recordDay = coffee.getRecordDay();
+        this.created_date = coffee.getCreated_date();
         this.countryOfOrigin = coffee.getCountryOfOrigin();
         this.productName = coffee.getProductName();
         this.degreeOfRoasting = coffee.getDegreeOfRoasting();
