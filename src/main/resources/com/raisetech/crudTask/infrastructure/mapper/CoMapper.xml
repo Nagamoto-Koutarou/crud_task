@@ -6,7 +6,5 @@
             *
         FROM
             coffees
-        ORDER BY
-            id
     </select>
 </mapper>

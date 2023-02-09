@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @Getter
@@ -13,7 +13,7 @@ import java.sql.Date;
 public class CoResponse {
 
     private int id;
-    private Date recordDay;
+    private LocalDate recordDay;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;
