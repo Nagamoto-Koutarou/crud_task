@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CoService {
     List<Coffee> findAll();
+
+    Coffee findById(int id);
 }

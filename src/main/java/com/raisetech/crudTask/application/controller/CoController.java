@@ -3,6 +3,7 @@ package com.raisetech.crudTask.application.controller;
 import com.raisetech.crudTask.domain.service.CoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,5 +19,10 @@ public class CoController {
     @GetMapping
     public List<CoResponse> getCoffees() {
         return coService.findAll().stream().map(CoResponse::new).toList();
+    }
+
+    @GetMapping("/{id}")
+    public CoResponse findById(@PathVariable int id) {
+        return new CoResponse(coService.findById(id));
     }
 }
