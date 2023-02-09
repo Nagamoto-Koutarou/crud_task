@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @Getter
@@ -13,7 +13,7 @@ import java.util.Date;
 public class CoResponse {
 
     private int id;
-    private Date recordDay;
+    private LocalDate created_date;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;
@@ -21,7 +21,7 @@ public class CoResponse {
 
     public CoResponse(Coffee coffee) {
         this.id = coffee.getId();
-        this.recordDay = coffee.getRecordDay();
+        this.created_date = coffee.getCreated_date();
         this.countryOfOrigin = coffee.getCountryOfOrigin();
         this.productName = coffee.getProductName();
         this.degreeOfRoasting = coffee.getDegreeOfRoasting();

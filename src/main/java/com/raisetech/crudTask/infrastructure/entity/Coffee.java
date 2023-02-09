@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Getter
@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Coffee {
     private int id;
-    private Date recordDay;
+    private LocalDate created_date;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;
