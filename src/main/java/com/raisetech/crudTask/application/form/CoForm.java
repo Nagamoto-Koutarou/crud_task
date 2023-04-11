@@ -2,12 +2,10 @@ package com.raisetech.crudTask.application.form;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class CoForm {
 
     @NotBlank
