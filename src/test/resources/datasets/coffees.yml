@@ -1,0 +1,19 @@
+coffees:
+  - id: 1
+    created_date: 2023-01-01
+    countryOfOrigin: "ブルーマウンテン"
+    productName: "ジャマイカ"
+    degreeOfRoasting: "浅煎り"
+    thoughts: "美味しかった"
+  - id: 2
+    created_date: 2023-02-02
+    countryOfOrigin: "モカ"
+    productName: "イエメン"
+    degreeOfRoasting: "やや深煎り"
+    thoughts: "美味しかった"
+  - id: 3
+    created_date: 2023-03-03
+    countryOfOrigin: "ケニア"
+    productName: "ケニア"
+    degreeOfRoasting: "深煎り"
+    thoughts: "美味しかった"
