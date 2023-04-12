@@ -4,7 +4,6 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.raisetech.crudTask.infrastructure.entity.Coffee;
 import com.raisetech.crudTask.infrastructure.mapper.CoMapper;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -49,7 +48,7 @@ public class CoMapperTest {
         int id = 1;
 
         Optional<Coffee> coffee = coMapper.findById(id);
-        Assertions.assertTrue(coffee.isPresent());
+        assertThat(coffee).isNotEmpty();
         assertThat(coffee.get()).isEqualTo(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"));
     }
 }
