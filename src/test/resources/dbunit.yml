@@ -1,0 +1,9 @@
+cacheConnection: false
+cacheTableNames: false
+properties:
+  schema: coffee_diary
+caseInsensitiveStrategy: LOWERCASE
+connectionConfig:
+  url: "jdbc:mysql://localhost:3308/coffee_diary"
+  user: "user"
+  password: "${TAG_MYSQL_PASSWORD}"

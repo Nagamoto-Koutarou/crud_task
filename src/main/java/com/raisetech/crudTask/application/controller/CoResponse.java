@@ -2,14 +2,12 @@ package com.raisetech.crudTask.application.controller;
 
 import com.raisetech.crudTask.infrastructure.entity.Coffee;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDate;
 
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class CoResponse {
 
     private int id;

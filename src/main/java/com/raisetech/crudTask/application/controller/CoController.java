@@ -17,7 +17,7 @@ public class CoController {
     private final CoService coService;
 
     @GetMapping
-    public List<CoResponse> getCoffees() {
+    public List<CoResponse> findAll() {
         return coService.findAll().stream().map(CoResponse::new).toList();
     }
 
