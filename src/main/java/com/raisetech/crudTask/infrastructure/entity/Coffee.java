@@ -1,12 +1,11 @@
 package com.raisetech.crudTask.infrastructure.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Coffee {
@@ -16,4 +15,8 @@ public class Coffee {
     private String productName;
     private String degreeOfRoasting;
     private String thoughts;
+
+public Coffee() {
+
+}
 }
