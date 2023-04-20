@@ -50,7 +50,7 @@ public class CoRestApiIntegrationTest {
                       "created_date": "2023-02-02",
                       "countryOfOrigin": "モカ",
                       "productName": "イエメン",
-                      "degreeOfRoasting": "やや浅煎り",
+                      "degreeOfRoasting": "やや深煎り",
                       "thoughts": "美味しかった"
                    },
                    {
@@ -60,8 +60,29 @@ public class CoRestApiIntegrationTest {
                       "productName": "ケニア",
                       "degreeOfRoasting": "深煎り",
                       "thoughts": "美味しかった"
-                   },
+                   }
                 ]
+                """, response, JSONCompareMode.STRICT);
+    }
+
+    @Test
+    @DisplayName("存在するユーザーのIDを指定したときに正常にユーザーが返されること")
+    @DataSet(value = "datasets/coffees.yml")
+    @Transactional
+    void findById() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/coffees/{id}", 1))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                   {
+                      "id": 1,
+                      "created_date": "2023-01-01",
+                      "countryOfOrigin": "ブルーマウンテン",
+                      "productName": "ジャマイカ",
+                      "degreeOfRoasting": "浅煎り",
+                      "thoughts": "美味しかった"
+                   }
                 """, response, JSONCompareMode.STRICT);
     }
 }
