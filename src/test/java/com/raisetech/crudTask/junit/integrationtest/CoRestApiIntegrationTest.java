@@ -27,7 +27,7 @@ public class CoRestApiIntegrationTest {
     MockMvc mockMvc;
 
     @Test
-    @DisplayName("すべてのユーザーが取得できること")
+    @DisplayName("すべてのコーヒー情報が取得できること")
     @DataSet(value = "datasets/coffees.yml")
     @Transactional
     void findAll() throws Exception {
@@ -66,7 +66,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DisplayName("存在するユーザーのIDを指定したときに正常にユーザーが返されること")
+    @DisplayName("存在するコーヒー情報のIDを指定したときに正常にユーザーが返されること")
     @DataSet(value = "datasets/coffees.yml")
     @Transactional
     void findById() throws Exception {

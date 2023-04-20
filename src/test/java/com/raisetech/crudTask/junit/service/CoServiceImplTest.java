@@ -29,7 +29,7 @@ public class CoServiceImplTest {
     CoMapper coMapper;
 
     @Test
-    @DisplayName("findAllですべてのメッセージが返されること")
+    @DisplayName("findAllですべてのコーヒー情報が返されること")
     public void findAll() {
         doReturn(List.of(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"),
                 (new Coffee(2, LocalDate.of(2023, 2, 2), "モカ", "イエメン", "やや深煎り", "美味しかった")),
@@ -43,7 +43,7 @@ public class CoServiceImplTest {
     }
 
     @Test
-    @DisplayName("存在するユーザーのIDを指定したときに正常にユーザーが返されること")
+    @DisplayName("存在するコーヒー情報のIDを指定したときに正常にユーザーが返されること")
     public void findById() {
         doReturn(Optional.of(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"))).when(coMapper).findById(1);
 
@@ -53,7 +53,7 @@ public class CoServiceImplTest {
     }
 
     @Test
-    @DisplayName("存在しないIDを指定したときにResourceNotFoundExceptionがスローされること")
+    @DisplayName("存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
     public void ThrowResourceNotFoundException() {
         when(coMapper.findById(100)).thenThrow(ResourceNotFoundException.class);
 
