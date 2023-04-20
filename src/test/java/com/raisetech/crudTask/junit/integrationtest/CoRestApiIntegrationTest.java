@@ -4,8 +4,10 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.Customization;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.comparator.CustomComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -84,5 +86,25 @@ public class CoRestApiIntegrationTest {
                       "thoughts": "美味しかった"
                    }
                 """, response, JSONCompareMode.STRICT);
+    }
+
+    @Test
+    @DisplayName("存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
+    @DataSet
+    @Transactional
+    void findByIdException() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/coffees/{id}", 100))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                 {
+                    "error": "Not Found",
+                    "status": "404",
+                    "path": "/coffees/100",
+                    "message": "resource not found",
+                    "timestamp": "2023-04-20T10:50:29.604145900+09:00[Asia/Tokyo]"
+                 }
+                """, response, new CustomComparator(JSONCompareMode.LENIENT,new Customization("timestamp", (o1, o2) -> true)));
     }
 }
