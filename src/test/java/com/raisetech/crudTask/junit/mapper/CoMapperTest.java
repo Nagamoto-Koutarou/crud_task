@@ -26,7 +26,7 @@ public class CoMapperTest {
     CoMapper coMapper;
 
     @Test
-    @DisplayName("すべてのユーザーが取得できること")
+    @DisplayName("すべてのコーヒー情報が取得できること")
     @DataSet(value = "datasets/coffees.yml")
     @Transactional
     public void findAll() {
@@ -41,7 +41,7 @@ public class CoMapperTest {
     }
 
     @Test
-    @DisplayName("存在するユーザーのIDを指定したときに正常にユーザーが返されること")
+    @DisplayName("存在するコーヒー情報のIDを指定したときに正常にユーザーが返されること")
     @DataSet(value = "datasets/coffees.yml")
     @Transactional
     public void findById() {
