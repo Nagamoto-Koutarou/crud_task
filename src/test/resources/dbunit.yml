@@ -6,4 +6,4 @@ caseInsensitiveStrategy: LOWERCASE
 connectionConfig:
   url: jdbc:mysql://localhost:3308/coffee_diary
   user: root
-  password: ${password:password}
+  password: ${TAG_MYSQL_PASSWORD}
