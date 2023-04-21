@@ -54,8 +54,10 @@ public class CoServiceImplTest {
 
     @Test
     @DisplayName("存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
-    public void ThrowResourceNotFoundException() {
-        doReturn(Optional.empty()).when(coMapper).findById(100);
-        assertThrows(ResourceNotFoundException.class, () -> coServiceImpl.findById(100));
+    public void throwResourceNotFoundException() {
+        when(coMapper.findById(100)).thenThrow(ResourceNotFoundException.class);
+
+        assertThrows(ResourceNotFoundException.class, () -> coMapper.findById(100));
+        verify(coMapper, times(1)).findById(100);
     }
 }

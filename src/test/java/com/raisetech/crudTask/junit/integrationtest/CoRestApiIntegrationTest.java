@@ -89,7 +89,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DisplayName("存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
+    @DisplayName("存在しないコーヒー情報のIDを指定したときに404のステータスコードが返され、レスポンスボディがNot Foundを表すJSONであること")
     @DataSet
     @Transactional
     void findByIdException() throws Exception {
