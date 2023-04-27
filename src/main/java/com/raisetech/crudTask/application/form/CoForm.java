@@ -4,9 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @Data
 public class CoForm {
+
+    private LocalDate created_date;
 
     @NotBlank
     private String countryOfOrigin;

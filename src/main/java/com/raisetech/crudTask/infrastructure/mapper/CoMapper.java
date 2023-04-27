@@ -11,4 +11,10 @@ public interface CoMapper {
     List<Coffee> findAll();
 
     Optional<Coffee> findById(int id);
+
+    int insert(Coffee conversionCoffee);
+
+    void update(int id, Coffee conversionCoffee);
+
+    void delete(int id);
 }

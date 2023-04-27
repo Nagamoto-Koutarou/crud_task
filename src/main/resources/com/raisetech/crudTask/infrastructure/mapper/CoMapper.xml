@@ -15,4 +15,26 @@
         WHERE
             id = #{id}
     </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.raisetech.crudTask.infrastructure.entity.Coffee">
+        INSERT INTO coffees (created_date, countryOfOrigin, productName, degreeOfRoasting, thoughts)
+        VALUES (#{created_date}, #{countryOfOrigin}, #{productName}, #{degreeOfRoasting}, #{thoughts})
+    </insert>
+    <update id="update">
+        UPDATE coffees
+        SET
+        created_date = #{conversionCoffee.created_date},
+        countryOfOrigin = #{conversionCoffee.countryOfOrigin},
+        productName = #{conversionCoffee.productName},
+        degreeOfRoasting = #{conversionCoffee.degreeOfRoasting},
+        thoughts = #{conversionCoffee.thoughts}
+        WHERE
+        id = #{id}
+    </update>
+    <delete id="delete">
+        DELETE
+        FROM
+           coffees
+        WHERE
+           id = #{id}
+    </delete>
 </mapper>
