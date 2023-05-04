@@ -12,7 +12,7 @@ public interface CoMapper {
 
     Optional<Coffee> findById(int id);
 
-    int insert(Coffee conversionCoffee);
+    void insert(Coffee conversionCoffee);
 
     void update(int id, Coffee conversionCoffee);
 

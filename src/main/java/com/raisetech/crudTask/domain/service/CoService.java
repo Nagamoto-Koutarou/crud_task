@@ -1,7 +1,6 @@
 package com.raisetech.crudTask.domain.service;
 
 import com.raisetech.crudTask.infrastructure.entity.Coffee;
-import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -10,9 +9,9 @@ public interface CoService {
 
     Coffee findById(int id);
 
-    Coffee register(Coffee conversionCoffee, BindingResult result);
+    Coffee register(Coffee conversionCoffee);
 
-    void update(int id, Coffee conversionCoffee, BindingResult result);
+    void update(int id, Coffee conversionCoffee);
 
     void delete(int id);
 }

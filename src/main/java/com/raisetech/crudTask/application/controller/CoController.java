@@ -1,6 +1,7 @@
 package com.raisetech.crudTask.application.controller;
 
 import com.raisetech.crudTask.application.form.CoForm;
+import com.raisetech.crudTask.domain.exception.BadRequestException;
 import com.raisetech.crudTask.domain.service.CoService;
 import com.raisetech.crudTask.infrastructure.entity.Coffee;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +35,12 @@ public class CoController {
 
     @PostMapping
     public ResponseEntity<Map<String, String>> create(@RequestBody @Validated CoForm coForm, BindingResult result, UriComponentsBuilder uriComponentsBuilder) {
+        if (result.hasErrors()) {
+            throw new BadRequestException("bad request");
+        }
         ModelMapper modelMapper1 = new ModelMapper();
         Coffee conversionCoffee = modelMapper1.map(coForm, Coffee.class);
-        Coffee coffee = coService.register(conversionCoffee, result);
+        Coffee coffee = coService.register(conversionCoffee);
         URI url = uriComponentsBuilder.path("/coffee/" + coffee.getId())
                 .build()
                 .toUri();
@@ -45,9 +49,12 @@ public class CoController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Map<String,String>> patch(@PathVariable("id")int id, @RequestBody @Validated CoForm coForm, BindingResult result, UriComponentsBuilder uriComponentsBuilder) {
+        if (result.hasErrors()) {
+            throw new BadRequestException("bad request");
+        }
         ModelMapper modelMapper = new ModelMapper();
         Coffee conversionCoffee = modelMapper.map(coForm, Coffee.class);
-        coService.update(id, conversionCoffee, result);
+        coService.update(id, conversionCoffee);
         URI url = uriComponentsBuilder.path("/coffees/" + id)
                 .build()
                 .toUri();
