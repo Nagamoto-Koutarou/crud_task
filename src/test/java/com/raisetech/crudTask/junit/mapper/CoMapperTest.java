@@ -51,4 +51,28 @@ public class CoMapperTest {
         assertThat(coffee).isNotEmpty();
         assertThat(coffee.get()).isEqualTo(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"));
     }
+
+    @Test
+    @DisplayName("新規のコーヒー情報が入力されたときに正常に登録すること")
+    @DataSet(value = "datasets/coffees.yml")
+    @Transactional
+    public void insert() {
+        coMapper.insert(new Coffee(4, LocalDate.of(2023, 4, 4), "国", "名前", "煎り度合い", "感想"));
+    }
+
+    @Test
+    @DisplayName("指定されたidのコーヒー情報が更新されること")
+    @DataSet(value = "datasets/coffees.yml")
+    @Transactional
+    public void update() {
+        coMapper.update(1, new Coffee(1, LocalDate.of(2023, 4, 4), "国", "名前", "煎り度合い", "感想"));
+    }
+
+    @Test
+    @DisplayName("指定されたidのコーヒー情報が削除されること")
+    @DataSet(value = "datasets/coffees.yml")
+    @Transactional
+    public void delete() {
+        coMapper.delete(1);
+    }
 }

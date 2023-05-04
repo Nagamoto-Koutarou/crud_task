@@ -53,9 +53,61 @@ public class CoServiceImplTest {
     }
 
     @Test
-    @DisplayName("存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
-    public void throwResourceNotFoundException() {
+    @DisplayName("ID検索時に存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
+    public void throwResourceNotFoundExceptionCaseOfFIndById() {
         doReturn(Optional.empty()).when(coMapper).findById(100);
         assertThrows(ResourceNotFoundException.class, () -> coServiceImpl.findById(100));
+    }
+
+    @Test
+    @DisplayName("新規のコーヒー情報が入力されたときに正常に登録されること")
+    public void register() {
+        doNothing().when(coMapper).insert(new Coffee(4, LocalDate.of(2023, 4, 4), "ハワイ", "コナ", "浅煎り", "美味しかった"));
+
+        Coffee actual = coServiceImpl.register(new Coffee(4, LocalDate.of(2023, 4, 4), "ハワイ", "コナ", "浅煎り", "美味しかった"));
+        assertThat(actual).isEqualTo(new Coffee(4, LocalDate.of(2023, 4, 4), "ハワイ", "コナ", "浅煎り", "美味しかった"));
+        verify(coMapper, times(1)).insert(new Coffee(4, LocalDate.of(2023, 4, 4), "ハワイ", "コナ", "浅煎り", "美味しかった"));
+    }
+
+    @Test
+    @DisplayName("存在するidに対応するコーヒー情報が更新されること")
+    public void update() {
+        Coffee coffee = new Coffee();
+        coffee.setId(1);
+        coffee.setCreated_date(LocalDate.of(2023, 5, 5));
+        coffee.setCountryOfOrigin("インド");
+        coffee.setProductName("モンスーン");
+        coffee.setDegreeOfRoasting("中煎り");
+        coffee.setThoughts("美味しかった");
+
+        doReturn(Optional.of(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"))).when(coMapper).findById(1);
+        doNothing().when(coMapper).update(1, new Coffee(1, LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった"));
+        coServiceImpl.update(1, coffee);
+        assertThat(coffee).isEqualTo(new Coffee(1, LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった"));
+    }
+
+    @Test
+    @DisplayName("更新時に存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
+    public void throwResourceNotFoundExceptionCaseOfUpdate() {
+        doReturn(Optional.empty()).when(coMapper).findById(100);
+        assertThrows(ResourceNotFoundException.class, () -> coServiceImpl.update(100,new Coffee(4, LocalDate.of(2023, 4, 4), "国", "名前", "煎り度合い", "感想")));
+    }
+
+    @Test
+    @DisplayName("存在するidに対応するコーヒー情報が削除されること")
+    public void delete() {
+        doReturn(Optional.of(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"))).when(coMapper).findById(1);
+
+        doNothing().when(coMapper).delete(1);
+        coServiceImpl.delete(1);
+        verify(coMapper, times(1)).findById(1);
+        verify(coMapper, times(1)).delete(1);
+    }
+
+    @Test
+    @DisplayName("削除時に存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
+    public void throwResourceNotFoundExceptionCaseOfDelete() {
+        doReturn(Optional.empty()).when(coMapper).findById(100);
+        assertThrows(ResourceNotFoundException.class, () -> coServiceImpl.delete(100));
     }
 }
