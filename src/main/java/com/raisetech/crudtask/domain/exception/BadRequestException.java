@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.domain.exception;
+package com.raisetech.crudtask.domain.exception;
 
 public class BadRequestException extends RuntimeException{
     public BadRequestException() {

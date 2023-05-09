@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.infrastructure.entity;
+package com.raisetech.crudtask.infrastructure.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 public class Coffee {
     private int id;
-    private LocalDate created_date;
+    private LocalDate createdDate;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;

@@ -1,6 +1,6 @@
-package com.raisetech.crudTask.junit.application.form;
+package com.raisetech.crudtask.junit.application.form;
 
-import com.raisetech.crudTask.application.form.CoForm;
+import com.raisetech.crudtask.application.form.CoForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,7 @@ public class CoFormCountryOfOriginTest {
     }
 
     @Test
-    public void testHalf_widthSpaceError() {
+    public void testHalfWidthSpaceError() {
         CoForm coForm =new CoForm(LocalDate.of(2023,1,1), "   ","ブルーマウンテン","浅煎り","美味しかった");
 
         validator.validate(coForm, bindingResult);

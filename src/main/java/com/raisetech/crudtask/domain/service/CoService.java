@@ -1,6 +1,6 @@
-package com.raisetech.crudTask.domain.service;
+package com.raisetech.crudtask.domain.service;
 
-import com.raisetech.crudTask.infrastructure.entity.Coffee;
+import com.raisetech.crudtask.infrastructure.entity.Coffee;
 
 import java.util.List;
 

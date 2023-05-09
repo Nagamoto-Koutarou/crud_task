@@ -1,6 +1,6 @@
-package com.raisetech.crudTask.infrastructure.mapper;
+package com.raisetech.crudtask.infrastructure.mapper;
 
-import com.raisetech.crudTask.infrastructure.entity.Coffee;
+import com.raisetech.crudtask.infrastructure.entity.Coffee;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,9 +12,9 @@ public interface CoMapper {
 
     Optional<Coffee> findById(int id);
 
-    void insert(Coffee conversionCoffee);
+    void insert(Coffee coffee);
 
-    void update(int id, Coffee conversionCoffee);
+    void update(int id, Coffee coffee);
 
     void delete(int id);
 }

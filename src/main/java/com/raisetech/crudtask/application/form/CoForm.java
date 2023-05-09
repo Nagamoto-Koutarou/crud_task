@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.application.form;
+package com.raisetech.crudtask.application.form;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class CoForm {
 
     @NotNull
-    private LocalDate created_date;
+    private LocalDate createdDate;
 
     @NotBlank
     private String countryOfOrigin;

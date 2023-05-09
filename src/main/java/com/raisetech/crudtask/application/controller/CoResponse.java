@@ -1,6 +1,6 @@
-package com.raisetech.crudTask.application.controller;
+package com.raisetech.crudtask.application.controller;
 
-import com.raisetech.crudTask.infrastructure.entity.Coffee;
+import com.raisetech.crudtask.infrastructure.entity.Coffee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class CoResponse {
 
     private int id;
-    private LocalDate created_date;
+    private LocalDate createdDate;
     private String countryOfOrigin;
     private String productName;
     private String degreeOfRoasting;
@@ -19,7 +19,7 @@ public class CoResponse {
 
     public CoResponse(Coffee coffee) {
         this.id = coffee.getId();
-        this.created_date = coffee.getCreated_date();
+        this.createdDate = coffee.getCreatedDate();
         this.countryOfOrigin = coffee.getCountryOfOrigin();
         this.productName = coffee.getProductName();
         this.degreeOfRoasting = coffee.getDegreeOfRoasting();

@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.domain.exception;
+package com.raisetech.crudtask.domain.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException() {

@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.domain.exception;
+package com.raisetech.crudtask.domain.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
