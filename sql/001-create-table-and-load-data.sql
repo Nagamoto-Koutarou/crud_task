@@ -2,7 +2,7 @@
 
  CREATE TABLE coffees (
    id int unsigned AUTO_INCREMENT,
-   createdDate DATETIME NOT NULL,
+   createdDate DATE NOT NULL,
    countryOfOrigin VARCHAR(20) NOT NULL,
    productName VARCHAR(50) NOT NULL,
    degreeOfRoasting VARCHAR(20) NOT NULL,
