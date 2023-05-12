@@ -10,5 +10,5 @@
    PRIMARY KEY (id)
  );
 
- INSERT INTO coffees (created_date, countryOfOrigin, productName, degreeOfRoasting, thoughts) VALUES
+ INSERT INTO coffees (createdDate, countryOfOrigin, productName, degreeOfRoasting, thoughts) VALUES
  (now(), "ブルーマウンテン", "ジャマイカ", "浅煎り", "バランスがよく美味しかった");
