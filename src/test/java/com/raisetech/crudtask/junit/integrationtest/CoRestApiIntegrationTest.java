@@ -1,4 +1,4 @@
-package com.raisetech.crudTask.junit.integrationtest;
+package com.raisetech.crudtask.junit.integrationtest;
 
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
@@ -31,7 +31,7 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("すべてのコーヒー情報が取得できること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void findAll() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/coffees"))
@@ -42,7 +42,7 @@ public class CoRestApiIntegrationTest {
                 [
                    {
                       "id": 1,
-                      "created_date": "2023-01-01",
+                      "createdDate": "2023-01-01",
                       "countryOfOrigin": "ブルーマウンテン",
                       "productName": "ジャマイカ",
                       "degreeOfRoasting": "浅煎り",
@@ -50,7 +50,7 @@ public class CoRestApiIntegrationTest {
                    },
                    {
                       "id": 2,
-                      "created_date": "2023-02-02",
+                      "createdDate": "2023-02-02",
                       "countryOfOrigin": "モカ",
                       "productName": "イエメン",
                       "degreeOfRoasting": "やや深煎り",
@@ -58,7 +58,7 @@ public class CoRestApiIntegrationTest {
                    },
                    {
                       "id": 3,
-                      "created_date": "2023-03-03",
+                      "createdDate": "2023-03-03",
                       "countryOfOrigin": "ケニア",
                       "productName": "ケニア",
                       "degreeOfRoasting": "深煎り",
@@ -70,7 +70,7 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("存在するコーヒー情報のIDを指定したときに正常にユーザーが返されること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void findById() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/coffees/{id}", 1))
@@ -80,7 +80,7 @@ public class CoRestApiIntegrationTest {
         JSONAssert.assertEquals("""
                    {
                       "id": 1,
-                      "created_date": "2023-01-01",
+                      "createdDate": "2023-01-01",
                       "countryOfOrigin": "ブルーマウンテン",
                       "productName": "ジャマイカ",
                       "degreeOfRoasting": "浅煎り",
@@ -91,7 +91,7 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("ID検索時に存在しないコーヒー情報のIDを指定したときに404のステータスコードが返され、レスポンスボディがNot Foundを表すJSONであること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void findByIdException() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/coffees/{id}", 100))
@@ -111,7 +111,7 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("新規のコーヒ情報が登録されること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void create() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.post("/coffees")
@@ -119,7 +119,7 @@ public class CoRestApiIntegrationTest {
                 .content("""
                          {
                             "id": 4,
-                            "created_date": "2023-04-04",
+                            "createdDate": "2023-04-04",
                             "countryOfOrigin": "ハワイ",
                             "productName": "コナ",
                             "degreeOfRoasting": "浅煎り",
@@ -137,7 +137,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @DisplayName("新規登録時に入力されたコーヒー情報に不備があった時に400のステータスコードが返され、レスポンスボディがBadRequestを示すJSONであること")
     @Transactional
     void createBadRequestException() throws Exception {
@@ -146,7 +146,7 @@ public class CoRestApiIntegrationTest {
                         .content("""
                         {
                             "id": 4,
-                            "created_date": null,
+                            "createdDate": null,
                             "countryOfOrigin": "  ",
                             "productName": "",
                             "degreeOfRoasting": "浅煎り",
@@ -168,7 +168,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @DisplayName("指定されたコーヒー情報が存在するとき、それが更新されること")
     @Transactional
     void patch() throws Exception {
@@ -177,7 +177,7 @@ public class CoRestApiIntegrationTest {
                 .content("""
                         {
                             "id": 1,
-                            "created_date": "2023-04-04",
+                            "createdDate": "2023-04-04",
                             "countryOfOrigin": "ハワイ",
                             "productName": "コナ",
                             "degreeOfRoasting": "浅煎り",
@@ -196,14 +196,14 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("更新時に存在しないコーヒー情報のIDを指定したときに404のステータスコードが返され、レスポンスボディがNot Foundを表すJSONであること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void patchNotFoundException() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.patch("/coffees/{id}", 100)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content("""
                         {
-                            "created_date": "2023-04-04",
+                            "createdDate": "2023-04-04",
                             "countryOfOrigin": "ハワイ",
                             "productName": "コナ",
                             "degreeOfRoasting": "浅煎り",
@@ -225,7 +225,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @DisplayName("更新時に入力されたコーヒー情報に不備があった時に400のステータスコードが返され、レスポンスボディがBadRequestを示すJSONであること")
     @Transactional
     void patchBadRequestException() throws Exception {
@@ -234,7 +234,7 @@ public class CoRestApiIntegrationTest {
                 .content("""
                         {
                             "id": 1,
-                            "created_date": null,
+                            "createdDate": null,
                             "countryOfOrigin": "  ",
                             "productName": "",
                             "degreeOfRoasting": "浅煎り",
@@ -256,7 +256,7 @@ public class CoRestApiIntegrationTest {
     }
 
     @Test
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @DisplayName("指定されたコーヒー情報が存在するとき、それが削除されること")
     @Transactional
     void delete() throws Exception {
@@ -273,7 +273,7 @@ public class CoRestApiIntegrationTest {
 
     @Test
     @DisplayName("削除時に存在しないコーヒー情報のIDを指定したときに404のステータスコードが返され、レスポンスボディがNot Foundを表すJSONであること")
-    @DataSet(value = "datasets/coffees.yml")
+    @DataSet(value = "datasets/findAll/coffees.yml")
     @Transactional
     void deleteNotFoundException() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.delete("/coffees/{id}", 100))

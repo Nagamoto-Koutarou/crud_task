@@ -1,9 +1,9 @@
-package com.raisetech.crudTask.junit.service;
+package com.raisetech.crudtask.junit.service;
 
-import com.raisetech.crudTask.domain.exception.ResourceNotFoundException;
-import com.raisetech.crudTask.domain.service.CoServiceImpl;
-import com.raisetech.crudTask.infrastructure.entity.Coffee;
-import com.raisetech.crudTask.infrastructure.mapper.CoMapper;
+import com.raisetech.crudtask.domain.exception.ResourceNotFoundException;
+import com.raisetech.crudtask.domain.service.CoServiceImpl;
+import com.raisetech.crudtask.infrastructure.entity.Coffee;
+import com.raisetech.crudtask.infrastructure.mapper.CoMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,7 +54,7 @@ public class CoServiceImplTest {
 
     @Test
     @DisplayName("ID検索時に存在しないコーヒー情報のIDを指定したときにResourceNotFoundExceptionがスローされること")
-    public void throwResourceNotFoundExceptionCaseOfFIndById() {
+    public void throwResourceNotFoundExceptionCaseOfFindById() {
         doReturn(Optional.empty()).when(coMapper).findById(100);
         assertThrows(ResourceNotFoundException.class, () -> coServiceImpl.findById(100));
     }
@@ -72,18 +72,12 @@ public class CoServiceImplTest {
     @Test
     @DisplayName("存在するidに対応するコーヒー情報が更新されること")
     public void update() {
-        Coffee coffee = new Coffee();
-        coffee.setId(1);
-        coffee.setCreated_date(LocalDate.of(2023, 5, 5));
-        coffee.setCountryOfOrigin("インド");
-        coffee.setProductName("モンスーン");
-        coffee.setDegreeOfRoasting("中煎り");
-        coffee.setThoughts("美味しかった");
 
+        Coffee coffee = new Coffee(1,LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった");
         doReturn(Optional.of(new Coffee(1, LocalDate.of(2023, 1, 1), "ブルーマウンテン", "ジャマイカ", "浅煎り", "美味しかった"))).when(coMapper).findById(1);
         doNothing().when(coMapper).update(1, new Coffee(1, LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった"));
         coServiceImpl.update(1, coffee);
-        assertThat(coffee).isEqualTo(new Coffee(1, LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった"));
+        verify(coMapper, times(1)).update(1, new Coffee(1, LocalDate.of(2023, 5, 5), "インド", "モンスーン", "中煎り", "美味しかった"));
     }
 
     @Test
