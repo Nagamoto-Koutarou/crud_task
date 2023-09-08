@@ -9,16 +9,11 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
-permissions:
-  contents: read
 
 jobs:
-  build:
-
+  test:
+    name: set up and run gradle test
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +34,7 @@ jobs:
 
     #Gradleのセットアップ
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      with:
-        arguments: build
+      uses: gradle/gradle-build-action@v2
+
+    - name: Run test
+      run: ./gradlew test
