@@ -37,4 +37,4 @@ jobs:
       uses: gradle/gradle-build-action@v2
 
     - name: Run test
-      run:  test test
+      run:  gradlew test
