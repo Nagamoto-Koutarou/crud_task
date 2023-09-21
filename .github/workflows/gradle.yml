@@ -18,15 +18,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    #リポジトリにチェックアウトする
+
     - name: Checkout
       uses: actions/checkout@v3
 
-    #コンテナの起動
     - name: Up docker-compose
       run: docker compose up -d
 
-    #JDKのセットアップ
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -38,3 +36,14 @@ jobs:
 
     - name: Conduct Tests
       run: ./gradlew test
+
+    - name: Archive production artifacts
+      use: actions/upload-artifact@v2
+      with:
+        name: Unit test results
+        path: build/test-results
+
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+      with:
+        path: artifacts
