@@ -38,7 +38,7 @@ jobs:
       run: ./gradlew test
 
     - name: Archive production artifacts
-      use: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: Unit test results
         path: build/test-results
