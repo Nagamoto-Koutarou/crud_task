@@ -15,6 +15,6 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
       - my-vol:/var/lib/mysql
     ports:
-      - "8080:8080"
+      - "3307:3306"
 volumes:
   my-vol:
