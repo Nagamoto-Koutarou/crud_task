@@ -19,7 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/coffees")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8080/")
 public class CoController {
 
     private final CoService coService;
