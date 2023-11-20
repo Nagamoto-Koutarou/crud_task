@@ -16,9 +16,10 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
+@RestController
 @RequestMapping("/coffees")
 @RequiredArgsConstructor
-@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5501")
 public class CoController {
 
     private final CoService coService;
